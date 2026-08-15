@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.WELCOME {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 30px 20px;
+
+    /* BACKGROUND */
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("mk.JPG");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+}
+
+.WELCOME img {
+    width: clamp(120px, 20vw, 200px);
+    height: auto;
+}
+
+.WELCOME h1 {
+    font-size: clamp(28px, 5vw, 60px);
+    margin-top: 20px;
+}
+
+.WELCOME h2 {
+    font-size: clamp(40px, 8vw, 90px);
+    margin-bottom: 30px;
+}
+
+.explore {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 30px;
+
+    background: white;
+    color: black;
+
+    font-size: clamp(14px, 2vw, 18px);
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.explore:hover {
+    transform: scale(1.05);
+    background: #ddd;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.contener {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    color: white;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100vh;
+
+    object-fit: cover;
+    display: block;
+}
+
+.gradasi {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.9),
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0)
+    );
+}
+
+.hero-text {
+    position: absolute;
+
+    left: 50%;
+    bottom: 8%;
+
+    transform: translateX(-50%);
+
+    width: min(90%, 900px);
+
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: clamp(30px, 6vw, 70px);
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: clamp(14px, 2vw, 20px);
+    line-height: 1.7;
+}
+
+
+/* =========================
+   HOLI
+========================= */
+
+.holi {
+    width: 100%;
+    min-height: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    background: #111;
+    color: white;
+}
+
+.holi h1 {
+    max-width: 1000px;
+
+    font-size: clamp(22px, 4vw, 50px);
+    line-height: 1.4;
+}
+
+
+/* =========================
+   CAROUSEL
+========================= */
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+
+    padding: 40px 0;
+
+    background: #000;
+}
+
+.wrap {
+    display: flex;
+    width: max-content;
+
+    gap: clamp(10px, 2vw, 25px);
+
+    animation: infiniteCarousel 45s linear infinite;
+}
+
+.wrap img {
+    width: clamp(100px, 15vw, 180px);
+    aspect-ratio: 1 / 1;
+
+    height: auto;
+
+    object-fit: cover;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    transition: transform 0.3s;
+}
+
+.wrap img:hover {
+    transform: scale(1.08);
+}
+
+
+/* INFINITE LOOP */
+
+@keyframes infiniteCarousel {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.oke {
+    width: 100%;
+    min-height: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    background: #111;
+    color: white;
+
+    text-align: center;
+}
+
+.lol {
+    font-size: clamp(20px, 4vw, 45px);
+    font-weight: bold;
+
+    max-width: 1000px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+
+    .hero-img {
+        height: 80vh;
+    }
+
+    .hero-text {
+        bottom: 5%;
+    }
+
+    .hero-text p {
+        line-height: 1.5;
+    }
+
+    .carousel {
+        padding: 25px 0;
+    }
+
+}
+
+
+/* =========================
+   HANDPHONE
+========================= */
+
+@media (max-width: 480px) {
+
+    .WELCOME {
+        min-height: 100svh;
+    }
+
+    .WELCOME img {
+        width: 140px;
+    }
+
+    .explore {
+        padding: 12px 20px;
+    }
+
+    .contener {
+        min-height: 80svh;
+    }
+
+    .hero-img {
+        height: 80svh;
+    }
+
+    .hero-text {
+        width: 90%;
+        bottom: 5%;
+    }
+
+    .hero-text p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .holi {
+        min-height: 250px;
+    }
+
+    .wrap {
+        gap: 10px;
+        animation-duration: 35s;
+    }
+
+    .wrap img {
+        width: 110px;
+    }
+
+    .lol {
+        font-size: 22px;
+    }
+
+}

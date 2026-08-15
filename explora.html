@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- WAJIB untuk HP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Memories</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            font-family: Arial, sans-serif;
+
+            min-height: 100vh;
+            width: 100%;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.55)
+                ),
+                url("CUKY2692.JPG");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: white;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            padding: 20px 5%;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            background: rgba(0, 0, 0, 0.3);
+
+            backdrop-filter: blur(8px);
+
+            z-index: 1000;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+
+            color: white;
+
+            padding: 10px 18px;
+
+            border-radius: 20px;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: rgb(139, 146, 255);
+
+            color: white;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding:
+                110px 20px 40px;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        h1 {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+            color: #ffffff;
+
+            font-size:
+                clamp(28px, 5vw, 50px);
+
+            text-shadow:
+                0 3px 15px black;
+        }
+
+
+        /* =========================
+           CAROUSEL BOX
+        ========================= */
+
+        .carousel-item {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            overflow: hidden;
+
+            border-radius: 18px;
+
+            background: rgba(0, 0, 0, 0.4);
+
+            box-shadow:
+                0 10px 40px
+                rgba(0, 0, 0, 0.6);
+        }
+
+
+        /* =========================
+           SLIDE AREA
+        ========================= */
+
+        .carousel {
+
+            display: flex;
+
+            width: 100%;
+
+            transition:
+                transform 0.5s ease;
+
+            touch-action: pan-y;
+
+        }
+
+
+        /* =========================
+           GAMBAR & VIDEO
+        ========================= */
+
+        .carousel img,
+        .carousel video {
+
+            flex: 0 0 100%;
+
+            width: 100%;
+
+            height: min(65vh, 600px);
+
+            min-height: 250px;
+
+            object-fit: contain;
+
+            background: #111;
+
+            display: block;
+        }
+
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .description {
+
+            width: 100%;
+
+            padding: 15px;
+
+            text-align: center;
+
+            background:
+                rgba(0, 0, 0, 0.75);
+
+            font-size:
+                clamp(14px, 2vw, 20px);
+
+            color: white;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .prev,
+        .next {
+
+            position: absolute;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            width: 45px;
+            height: 45px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0, 0, 0, 0.6);
+
+            color: white;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            transition: 0.3s;
+        }
+
+
+        .prev {
+            left: 15px;
+        }
+
+
+        .next {
+            right: 15px;
+        }
+
+
+        .prev:hover,
+        .next:hover {
+
+            background:
+                rgb(139, 146, 255);
+
+            transform:
+                translateY(-50%)
+                scale(1.1);
+        }
+
+
+        /* =========================
+           DOT / INDICATOR
+        ========================= */
+
+        .counter {
+
+            text-align: center;
+
+            margin-top: 12px;
+
+            font-size: 14px;
+
+            color: white;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            header {
+
+                padding:
+                    15px 20px;
+
+            }
+
+            nav a {
+
+                padding:
+                    8px 13px;
+
+                font-size: 14px;
+            }
+
+            .container {
+
+                padding:
+                    100px 12px 30px;
+            }
+
+            .carousel-item {
+
+                border-radius: 12px;
+            }
+
+            .carousel img,
+            .carousel video {
+
+                height:
+                    55vh;
+
+                min-height:
+                    230px;
+            }
+
+            .prev,
+            .next {
+
+                width: 40px;
+                height: 40px;
+
+                font-size: 20px;
+            }
+
+        }
+
+
+        /* =========================
+           HANDPHONE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            header {
+
+                justify-content: center;
+
+                padding:
+                    12px;
+            }
+
+            nav a {
+
+                font-size: 13px;
+
+                padding:
+                    8px 15px;
+            }
+
+            .container {
+
+                padding:
+                    85px 8px 20px;
+            }
+
+            h1 {
+
+                margin-bottom:
+                    15px;
+
+                font-size:
+                    28px;
+            }
+
+            .carousel-item {
+
+                border-radius:
+                    10px;
+            }
+
+            .carousel img,
+            .carousel video {
+
+                height:
+                    60vh;
+
+                min-height:
+                    250px;
+            }
+
+            .prev,
+            .next {
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+
+                font-size:
+                    18px;
+            }
+
+            .prev {
+
+                left:
+                    8px;
+            }
+
+            .next {
+
+                right:
+                    8px;
+            }
+
+            .description {
+
+                padding:
+                    12px 8px;
+
+                font-size:
+                    13px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <nav>
+
+            <a
+                href="Gonzaga.html"
+                class="active">
+                Home
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         CONTENT
+    ========================= -->
+
+    <div class="container">
+
+        <h1>
+            Our Memories
+        </h1>
+
+
+        <!-- CAROUSEL -->
+
+        <div class="carousel-item">
+
+
+            <div class="carousel" id="carousel">
+
+
+                <!-- FOTO 1 -->
+
+                <img
+                    src="gg.JPG"
+                    alt="Gonzaga">
+
+
+                <!-- FOTO 2 -->
+
+                <img
+                    src="GONZAGANIANS 2023-2025.png"
+                    alt="Gonzaganians">
+
+
+                <!-- VIDEO -->
+
+                <video
+                    src="0727 (1).mp4"
+                    controls
+                    playsinline>
+                </video>
+
+
+                <!-- FOTO 3 -->
+
+                <img
+                    src="CUKY2692.JPG"
+                    alt="Memory">
+
+
+                <!-- FOTO 4 -->
+
+                <img
+                    src="f1.jpg"
+                    alt="Memory 1">
+
+
+                <!-- FOTO 5 -->
+
+                <img
+                    src="f2.jpg"
+                    alt="Memory 2">
+
+
+                <!-- FOTO 6 -->
+
+                <img
+                    src="f3.jpg"
+                    alt="Memory 3">
+
+
+                <!-- FOTO 7 -->
+
+                <img
+                    src="f4.jpg"
+                    alt="Memory 4">
+
+
+                <!-- FOTO 8 -->
+
+                <img
+                    src="f5.jpg"
+                    alt="Memory 5">
+
+
+                <!-- FOTO 9 -->
+
+                <img
+                    src="f6.jpg"
+                    alt="Memory 6">
+
+
+                <!-- FOTO 10 -->
+
+                <img
+                    src="f7.jpg"
+                    alt="Memory 7">
+
+
+                <!-- FOTO 11 -->
+
+                <img
+                    src="f8.jpg"
+                    alt="Memory 8">
+
+
+                <!-- FOTO 12 -->
+
+                <img
+                    src="f9.jpg"
+                    alt="Memory 9">
+
+
+                <!-- FOTO 13 -->
+
+                <img
+                    src="f10.jpg"
+                    alt="Memory 10">
+
+            </div>
+
+
+            <!-- TOMBOL KIRI -->
+
+            <button
+                class="prev"
+                onclick="moveSlide(-1)"
+                aria-label="Foto sebelumnya">
+
+                &#10094;
+
+            </button>
+
+
+            <!-- TOMBOL KANAN -->
+
+            <button
+                class="next"
+                onclick="moveSlide(1)"
+                aria-label="Foto berikutnya">
+
+                &#10095;
+
+            </button>
+
+
+            <!-- KETERANGAN -->
+
+            <div class="description">
+
+                Time will pass but
+                our memories will last ❤️
+
+            </div>
+
+        </div>
+
+
+        <!-- COUNTER -->
+
+        <div
+            class="counter"
+            id="counter">
+
+            1 / 13
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        const carousel =
+            document.getElementById("carousel");
+
+        const slides =
+            carousel.children;
+
+        const counter =
+            document.getElementById("counter");
+
+        let currentSlide = 0;
+
+
+        /* =========================
+           PINDAH FOTO
+        ========================= */
+
+        function moveSlide(direction) {
+
+            currentSlide += direction;
+
+
+            /* Jika sampai foto terakhir,
+               kembali ke foto pertama */
+
+            if (
+                currentSlide >= slides.length
+            ) {
+
+                currentSlide = 0;
+
+            }
+
+
+            /* Jika dari foto pertama
+               tekan kiri,
+               pergi ke foto terakhir */
+
+            if (
+                currentSlide < 0
+            ) {
+
+                currentSlide =
+                    slides.length - 1;
+
+            }
+
+
+            carousel.style.transform =
+                `translateX(-${currentSlide * 100}%)`;
+
+
+            counter.textContent =
+                `${currentSlide + 1} / ${slides.length}`;
+
+        }
+
+
+        /* =========================
+           SWIPE UNTUK HP
+        ========================= */
+
+        let startX = 0;
+
+        let endX = 0;
+
+
+        carousel.addEventListener(
+            "touchstart",
+            function(event) {
+
+                startX =
+                    event.touches[0].clientX;
+
+            }
+        );
+
+
+        carousel.addEventListener(
+            "touchend",
+            function(event) {
+
+                endX =
+                    event.changedTouches[0].clientX;
+
+                handleSwipe();
+
+            }
+        );
+
+
+        function handleSwipe() {
+
+            const distance =
+                startX - endX;
+
+
+            /* Swipe kiri */
+
+            if (distance > 50) {
+
+                moveSlide(1);
+
+            }
+
+
+            /* Swipe kanan */
+
+            else if (distance < -50) {
+
+                moveSlide(-1);
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+</html>

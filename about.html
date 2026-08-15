@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gonzaga Project</title>
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+
+            font-family: Arial, sans-serif;
+            color: white;
+            background: #000;
+        }
+
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.75)
+                ),
+                url("mk.JPG");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            z-index: -1;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo-img {
+            display: block;
+
+            width: clamp(90px, 12vw, 150px);
+            height: auto;
+
+            margin: 20px auto 10px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 10px 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: clamp(8px, 2vw, 25px);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+
+            font-size: clamp(13px, 1.5vw, 20px);
+
+            padding: 8px 12px;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #73da7a;
+        }
+
+
+        /* =========================
+           WELCOME
+        ========================= */
+
+        .WELCOME {
+            width: min(1200px, 94%);
+
+            margin: 40px auto 0;
+
+            padding: 30px 20px;
+
+            text-align: center;
+        }
+
+        .WELCOME h1 {
+            font-size: clamp(28px, 5vw, 60px);
+
+            line-height: 1.2;
+
+            margin-bottom: 15px;
+        }
+
+        .WELCOME h2 {
+            font-size: clamp(20px, 3vw, 40px);
+
+            margin-bottom: 20px;
+        }
+
+        .WELCOME h3 {
+            font-size: clamp(16px, 2.5vw, 30px);
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+        }
+
+        .WELCOME h4 {
+            font-size: clamp(14px, 2vw, 22px);
+
+            line-height: 1.6;
+
+            margin-bottom: 50px;
+        }
+
+
+        /* =========================
+           PHOTO CARDS
+        ========================= */
+
+        .cards {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+
+            gap: clamp(15px, 2vw, 30px);
+
+            padding: 20px 0;
+        }
+
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            width: 100%;
+
+            padding: 15px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 15px;
+
+            backdrop-filter: blur(5px);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+
+        /* =========================
+           FOTO
+        ========================= */
+
+        .card img {
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            object-fit: cover;
+
+            display: block;
+
+            border-radius: 12px;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+           NAMA
+        ========================= */
+
+        .ag {
+            font-size: clamp(14px, 1.5vw, 20px);
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           QUOTE
+        ========================= */
+
+        .l1 {
+            font-size: clamp(12px, 1.2vw, 17px);
+
+            line-height: 1.5;
+
+            color: #eee;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 999px) and (min-width: 601px) {
+
+            .cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           HANDPHONE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 5px 10px;
+            }
+
+            nav {
+                gap: 3px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 6px 7px;
+            }
+
+            .WELCOME {
+                width: 94%;
+
+                margin-top: 20px;
+
+                padding: 20px 10px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 12px;
+            }
+
+            .card {
+                padding: 8px;
+
+                border-radius: 10px;
+            }
+
+            .card img {
+                border-radius: 8px;
+            }
+        }
+
+
+        /* =========================
+           HP KECIL
+        ========================= */
+
+        @media (max-width: 380px) {
+
+            .cards {
+                gap: 8px;
+            }
+
+            .card {
+                padding: 6px;
+            }
+
+            .ag {
+                font-size: 12px;
+            }
+
+            .l1 {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background"></div>
+
+
+    <!-- LOGO -->
+    <img
+        class="logo-img"
+        src="GONZAGANIANS_2023-2025-removebg-preview.png"
+        alt="Gonzaga"
+    >
+
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <a href="Gonzaga.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="work.html">Dream</a>
+            <a href="konta1.html">Contact</a>
+            <a href="explora.html">Memories</a>
+        </nav>
+    </header>
+
+
+    <!-- WELCOME -->
+    <section class="WELCOME">
+
+        <h1>GONZAGANIANS 2ND GENERATION</h1>
+
+        <h2>IN LOIOLA COLLEGE</h2>
+
+        <h3>
+            GONZAGA SENIOR HIGH SCHOOL<br>
+            ONCE LOIOLA FOREVER LOIOLA
+        </h3>
+
+        <h4>
+            "We are gone but our memories still live"<br>
+            "We come to learn, we go to serve"
+        </h4>
+
+
+        <!-- =========================
+             SEMUA FOTO
+        ========================= -->
+
+        <div class="cards">
+
+
+            <div class="card">
+                <img src="1 Aguiar.JPG" alt="Aguiar">
+                <div class="ag">AGUIAR</div>
+                <div class="l1">
+                    "Study is your key to success"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="2 Ana Jessica.JPG" alt="Ana Jessica">
+                <div class="ag">ANA JESSICA</div>
+                <div class="l1">
+                    "See you later!"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="3 Bahkita.JPG" alt="Bahkita">
+                <div class="ag">BAHKITA</div>
+                <div class="l1">
+                    "Be unique and be yourself"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="4 Benicia.JPG" alt="Benicia">
+                <div class="ag">BENICIA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="5 Canizia.JPG" alt="Canizia">
+                <div class="ag">CANIZIA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="6 Cassandra.JPG" alt="Cassandra">
+                <div class="ag">CASSANDRA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="7 Cimplicio.JPG" alt="Cimplicio">
+                <div class="ag">CIMPLICIO</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="8 Delfina.JPG" alt="Delfina">
+                <div class="ag">DELFINA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="9 Deoneia.JPG" alt="Deoneia">
+                <div class="ag">DEONEIA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="10 Emmanuel.JPG" alt="Emmanuel">
+                <div class="ag">EMMANUEL</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="11 Esperanca.JPG" alt="Esperanca">
+                <div class="ag">ESPERANÇA</div>
+                <div class="l1">
+                    "Be more"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="12 Evita.JPG" alt="Evita">
+                <div class="ag">EVITA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="13 Ferdinand.JPG" alt="Ferdinand">
+                <div class="ag">FERDINAND</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="14 Fevrianti.JPG" alt="Fevrianti">
+                <div class="ag">FEVRIANTI</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="15 Francisca.JPG" alt="Francisca">
+                <div class="ag">FRANCISCA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="16 Giavania.JPG" alt="Giavania">
+                <div class="ag">GIAVANIA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="17 Guilhermina.JPG" alt="Guilhermina">
+                <div class="ag">GUILHERMINA</div>
+                <div class="l1">
+                    "Love the life you live
+                    and live the life you love"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="18 Ignatius.JPG" alt="Ignatius">
+                <div class="ag">IGNATIUS</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="20 Jania.JPG" alt="Jania">
+                <div class="ag">JANIA</div>
+                <div class="l1">
+                    "Perfection is an illusion"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="21 Jenilson.JPG" alt="Jenilson">
+                <div class="ag">JENILSON</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="22 Jenovia.JPG" alt="Jenovia">
+                <div class="ag">JENOVIA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="23 Larissa.JPG" alt="Larissa">
+                <div class="ag">LARISSA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="24 Lurocia.JPG" alt="Lurochia">
+                <div class="ag">LUROCHIA</div>
+                <div class="l1">
+                    "Com Deus todo é possivel"
+                </div>
+            </div>
+
+            
+ <div class="card">
+                <img src="25 Marco.JPG" alt="Marco">
+                <div class="ag">MARCO</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+ <div class="card">
+                <img src="26 Maria Baptista.JPG" alt="Maria Baptista">
+                <div class="ag">MARIA BAPTISTA</div>
+                <div class="l1">
+                    "Never stop learning,
+                    because life never stops teaching"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="27 Maria Delafonsa.JPG" alt="Maria Dellafonsa">
+                <div class="ag">MARIA DELLAFONSA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="28 Melicia.JPG" alt="Melicia">
+                <div class="ag">MELICIA</div>
+                <div class="l1">
+                    "Tomorrow is a new day"
+                </div>
+            </div>
+
+
+   <div class="card">
+                <img src="29 Michel.JPG" alt="Michle">
+                <div class="ag">MICHLE</div>
+                <div class="l1">
+                    "VENI VEDI VICI"
+                </div>
+            </div>
+
+
+             <div class="card">
+                <img src="30 Milugrrexcya.JPG" alt="Milugrexcya">
+                <div class="ag">MILUGREXCYA</div>
+                <div class="l1">
+                    "You are braver than you believe,
+                    and stronger than you seem"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="31 Natalvira.JPG" alt="Natalvira">
+                <div class="ag">NATALVIRA</div>
+                <div class="l1">
+                    "This is life before you
+                    know who you are going to be"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="32 Nilda.JPG" alt="Nilda">
+                <div class="ag">NILDA</div>
+                <div class="l1">
+                    "Do something today that your
+                    future self will thank you for"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="33 Osvaldo.JPG" alt="Osvaldo">
+                <div class="ag">OSVALDO</div>
+                <div class="l1">JES</div>
+            </div>
+
+            
+            <div class="card">
+                <img src="34 Patricia.JPG" alt="Patricia">
+                <div class="ag">PATRICIA</div>
+                <div class="l1">
+                    "Push yourself, because no one else
+                    is going to do it for you"
+                </div>
+            </div>
+
+
+             <div class="card">
+                <img src="35 Richana.JPG" alt="Richana">
+                <div class="ag">RICHANA</div>
+                <div class="l1">JES</div>
+            </div>
+
+
+            <div class="card">
+                <img src="36 Riganho.JPG" alt="Riganho">
+                <div class="ag">RIGANHO</div>
+                <div class="l1">
+                    "Ingta, target kita berjaya di usia
+                    muda bukan menikah muda"
+                </div>
+            </div>
+
+
+             <div class="card">
+                <img src="37 Rivanio.JPG" alt="Rivanio">
+                <div class="ag">RIVANIO</div>
+                <div class="l1">
+                    "I use my time to pay my moments"
+                </div>
+            </div>
+
+ 
+            <div class="card">
+                <img src="38 Rosalina.JPG" alt="Rosalina">
+                <div class="ag">ROSALINA</div>
+                <div class="l1">
+                    "Don't compare yourself with others,
+                    compete with yourself to be the best"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="39 Safira.JPG" alt="Safira">
+                <div class="ag">SAFIRA</div>
+                <div class="l1">
+                    "Money is the reason exist"
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="40 Vidalia.JPG" alt="Vidalia">
+                <div class="ag">VIDALIA</div>
+                <div class="l1">JES</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MUSIC -->
+
+    <audio
+        autoplay
+        loop
+        src="Forever_Young_-_Alphaville__LIRIK_DAN_TERJEMAHAN_(256k).mp3">
+    </audio>
+
+</body>
+</html>
