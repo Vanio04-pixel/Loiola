@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Gonzaga Dream</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            width: 100%;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            color: white;
+
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.78)
+                ),
+                url("matak 3.JPG");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            width: 100%;
+
+            padding: 18px 20px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: rgba(0, 0, 0, 0.40);
+
+            backdrop-filter: blur(10px);
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        nav {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+        }
+
+
+        nav a {
+
+            text-decoration: none;
+
+            color: white;
+
+            padding: 9px 14px;
+
+            border-radius: 20px;
+
+            font-size: clamp(12px, 1.4vw, 17px);
+
+            transition: 0.3s;
+
+        }
+
+
+        nav a:hover {
+
+            background: rgb(1, 143, 65);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        nav a.active {
+
+            background: rgb(1, 143, 65);
+
+        }
+
+
+        nav a.notactive {
+
+            background: rgb(69, 87, 77);
+
+        }
+
+
+        /* =====================================================
+           TEXT / JUDUL
+        ===================================================== */
+
+        .liafuan {
+
+            width: min(800px, 92%);
+
+            margin: 45px auto 30px;
+
+            text-align: center;
+
+        }
+
+
+        .liafuan h1 {
+
+            color: white;
+
+            font-size: clamp(20px, 3vw, 38px);
+
+            font-weight: 400;
+
+            line-height: 1.5;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                0 2px 10px black;
+
+        }
+
+
+        .liafuan small {
+
+            font-size: clamp(10px, 1.2vw, 14px);
+
+            opacity: 0.8;
+
+        }
+
+
+        /* =====================================================
+           CONTAINER SEMUA KARTU
+        ===================================================== */
+
+        .cards-container {
+
+            width: min(1400px, 94%);
+
+            margin: auto;
+
+            padding: 20px 0 70px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(200px, 1fr)
+                );
+
+            gap: 25px;
+
+            justify-items: center;
+
+        }
+
+
+        /* =====================================================
+           FLIP CONTAINER
+        ===================================================== */
+
+        .flip-container {
+
+            width: 100%;
+
+            max-width: 220px;
+
+            perspective: 1000px;
+
+        }
+
+
+        /* =====================================================
+           FLIP CARD
+        ===================================================== */
+
+        .flip-card {
+
+            width: 100%;
+
+            aspect-ratio: 4 / 5;
+
+            position: relative;
+
+            cursor: pointer;
+
+            transform-style: preserve-3d;
+
+            transition:
+                transform 0.9s ease;
+
+        }
+
+
+        /* =====================================================
+           FLIP SAAT MOUSE DIARAHKAN
+        ===================================================== */
+
+        .flip-container:hover .flip-card {
+
+            transform:
+                rotateY(180deg);
+
+            box-shadow:
+                0 10px 40px
+                rgba(0, 0, 0, 0.7);
+
+        }
+
+
+        /* =====================================================
+           INNER
+        ===================================================== */
+
+        .flip-card-inner {
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            transform-style: preserve-3d;
+
+        }
+
+
+        /* =====================================================
+           DEPAN DAN BELAKANG
+        ===================================================== */
+
+        .flip-card-front,
+        .flip-card-back {
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            backface-visibility: hidden;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.5);
+
+        }
+
+
+        /* =====================================================
+           FOTO DEPAN
+        ===================================================== */
+
+        .flip-card-front {
+
+            background: #222;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+        .flip-card-front img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           BELAKANG KARTU
+        ===================================================== */
+
+        .flip-card-back {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #116d4e,
+                    #2980b9
+                );
+
+            color: white;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 20px;
+
+            font-size:
+                clamp(11px, 1.3vw, 16px);
+
+            line-height: 1.5;
+
+            font-style: italic;
+
+            transform:
+                rotateY(180deg);
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .cards-container {
+
+                grid-template-columns:
+                    repeat(
+                        auto-fit,
+                        minmax(170px, 1fr)
+                    );
+
+                gap: 18px;
+
+            }
+
+
+            .flip-container {
+
+                max-width: 190px;
+
+            }
+
+
+            header {
+
+                padding: 14px 10px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           HANDPHONE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .liafuan {
+
+                margin-top: 30px;
+
+                margin-bottom: 20px;
+
+            }
+
+
+            .liafuan h1 {
+
+                font-size: 19px;
+
+                letter-spacing: 1px;
+
+            }
+
+
+            .cards-container {
+
+                width: 94%;
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 12px;
+
+            }
+
+
+            .flip-container {
+
+                width: 100%;
+
+                max-width: none;
+
+            }
+
+
+            .flip-card-back {
+
+                padding: 10px;
+
+                font-size: 10px;
+
+            }
+
+
+            nav {
+
+                gap: 4px;
+
+            }
+
+
+            nav a {
+
+                font-size: 10px;
+
+                padding: 7px 8px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           HP KECIL
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .cards-container {
+
+                gap: 8px;
+
+            }
+
+
+            nav a {
+
+                font-size: 9px;
+
+                padding: 6px;
+
+            }
+
+
+            .flip-card-back {
+
+                font-size: 9px;
+
+                padding: 7px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           TOUCH SCREEN / HP
+        ===================================================== */
+
+        @media (hover: none) {
+
+            .flip-container:active
+            .flip-card {
+
+                transform:
+                    rotateY(180deg);
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+    <header>
+
+        <nav>
+
+            <a
+                href="Gonzaga.html"
+                class="notactive">
+                Home
+            </a>
+
+            <a
+                href="about.html"
+                class="notactive">
+                About
+            </a>
+
+            <a
+                href="work.html"
+                class="active">
+                Dream
+            </a>
+
+            <a
+                href="konta1.html"
+                class="notactive">
+                Contact
+            </a>
+
+            <a
+                href="explora.html"
+                class="notactive">
+                Memories
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         JUDUL
+    ===================================================== -->
+
+    <div class="liafuan">
+
+        <h1>
+
+            Live the moments
+
+            <br>
+
+           trust the journey
+
+            <br>
+
+            Right now
+
+            <br>
+
+            <b>Let your light shine</b>
+
+            <br>
+
+            <small>
+                (Gonzaga Taruto)
+            </small>
+
+        </h1>
+
+    </div>
+
+
+    <!-- =====================================================
+         SEMUA FOTO
+    ===================================================== -->
+
+    <div class="cards-container">
+
+
+        <!-- 1 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A23.JPG"
+                            alt="Foto 1">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            Study is your key to success.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A24.JPG"
+                            alt="Ana Jessica">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            See you later!
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A28.JPG"
+                            alt="Bahkita">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            Be unique and be yourself.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A29.JPG"
+                            alt="Foto 4">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A30.JPG"
+                            alt="Canizia">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A31.JPG"
+                            alt="Foto 6">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A32.JPG"
+                            alt="Cimplicio">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A33.JPG"
+                            alt="Foto 8">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A34.JPG"
+                            alt="Foto 9">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A35.JPG"
+                            alt="Foto 10">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A1.JPG"
+                            alt="Foto 11">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A2.JPG"
+                            alt="Foto 12">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 13 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A3.JPG"
+                            alt="Foto 13">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 14 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A4.JPG"
+                            alt="Foto 14">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 15 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A5.JPG"
+                            alt="Foto 15">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 16 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A6.JPG"
+                            alt="Foto 16">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 17 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A7.JPG"
+                            alt="Foto 17">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 18 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A8.JPG"
+                            alt="Ignatius">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 19 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A9.JPG"
+                            alt="Foto 19">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 20 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A10.JPG"
+                            alt="Foto 20">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 21 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A11.JPG"
+                            alt="Foto 21">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 22 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A12.JPG"
+                            alt="Foto 22">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 23 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A13.JPG"
+                            alt="Foto 23">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 24 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A14.JPG"
+                            alt="Marco">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 25 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A15.JPG"
+                            alt="Maria Baptista">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            Never stop learning,
+                            because life never stops teaching.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 26 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A16.JPG"
+                            alt="Foto 26">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 27 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A17.JPG"
+                            alt="Melicia">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            Tomorrow is a new day.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 28 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A18.JPG"
+                            alt="Foto 28">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 29 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A19.JPG"
+                            alt="Foto 29">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 30 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A20.JPG"
+                            alt="Natalvira">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            This is life before you
+                            know who you are going to be.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 31 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A21.JPG"
+                            alt="Nilda">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            Do something today that
+                            your future self will thank you for.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 32 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A22.JPG"
+                            alt="Foto 32">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 33 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A26.JPG"
+                            alt="Foto 33">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 34 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="A27.JPG"
+                            alt="Foto 34">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 35 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="36 Riganho.JPG"
+                            alt="Riganho">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            Ingta, target kita berjaya
+                            di usia muda bukan menikah muda.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 36 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="37 Rivanio.JPG"
+                            alt="Rivanio">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            I use my time to
+                            pay my moments.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 37 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="38 Rosalina.JPG"
+                            alt="Rosalina">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            Don't compare yourself
+                            with others. Compete with
+                            yourself to be the best.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 38 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="39 Safira.JPG"
+                            alt="Safira">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>
+                            Money is the reason exist.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 39 -->
+
+        <div class="flip-container">
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img
+                            src="40 Vidalia.JPG"
+                            alt="Vidalia">
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <p>JES</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         MUSIC
+    ===================================================== -->
+
+    <audio
+        autoplay
+        loop
+        src="right_now__speed_up__reverb___lyrics__256k__LTeEnS.mp3">
+    </audio>
+
+
+</body>
+
+</html>
