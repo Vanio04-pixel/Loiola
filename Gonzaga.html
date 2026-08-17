@@ -13,8 +13,9 @@
 </head>
 
 <div id="musicPermission">
-    
+
     <div class="music-box">
+
         <div class="music-icon">🎵</div>
 
         <h2>Welcome to Gonzaganians</h2>
@@ -26,13 +27,53 @@
         <button onclick="enterWithMusic()">
             🎵 ENTER WITH MUSIC
         </button>
+
     </div>
 
 </div>
 
+
 <audio id="backgroundMusic" loop preload="auto">
-    <source src="Harry_Potter_Ambient_Music__Hogwarts__Relaxing,_Studying,_Sleeping(128k).m4a" type="audio/mp4">
+    <source
+        src="Harry_Potter_Ambient_Music__Hogwarts__Relaxing,_Studying,_Sleeping(128k).m4a"
+        type="audio/mp4">
 </audio>
+
+
+<script>
+
+function enterWithMusic() {
+
+    const music = document.getElementById("backgroundMusic");
+    const permission = document.getElementById("musicPermission");
+
+    music.play()
+        .then(function () {
+
+            // Simpan bahwa user sudah mengizinkan musik
+            sessionStorage.setItem("musicEnabled", "true");
+
+            // Hilangkan halaman izin
+            permission.style.opacity = "0";
+
+            // Tunggu animasi selesai
+            setTimeout(function () {
+
+                // Masuk ke web berikutnya
+                window.location.href = "index.html";
+
+            }, 500);
+
+        })
+        .catch(function () {
+
+            alert("Please tap the button again to enable music.");
+
+        });
+
+}
+
+</script>
 
 <script>
 function enterWithMusic() {
