@@ -78,6 +78,7 @@ body {
 
     background: white;
     color: black;
+    font-family: "Lexend Giga", sans-serif;
 
     font-size: clamp(14px, 2vw, 18px);
     cursor: pointer;
@@ -103,6 +104,7 @@ body {
     overflow: hidden;
 
     color: white;
+    
 }
 
 .hero-img {
@@ -111,18 +113,19 @@ body {
 
     object-fit: cover;
     display: block;
+    
+    
 }
 
 .gradasi {
     position: absolute;
     inset: 0;
 
-    background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.9),
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0)
-    );
+     background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.55)
+        )
 }
 
 .hero-text {
@@ -140,12 +143,14 @@ body {
 
 .hero-text h1 {
     font-size: clamp(30px, 6vw, 70px);
-    margin-bottom: 20px;
+    margin-bottom: 100px;
+    font-family: "Lexend Giga", sans-serif;
 }
 
 .hero-text p {
     font-size: clamp(14px, 2vw, 20px);
     line-height: 1.7;
+    font-family: "Bellota Text", sans-serif;
 }
 
 
@@ -167,13 +172,15 @@ body {
 
     background: #111;
     color: white;
+    
 }
 
 .holi h1 {
     max-width: 1000px;
 
-    font-size: clamp(22px, 4vw, 50px);
+    font-size: clamp(22px, 5vw, 50px);
     line-height: 1.4;
+    font-family: "Bellota Text", sans-serif;
 }
 
 
@@ -259,6 +266,7 @@ body {
     font-weight: bold;
 
     max-width: 1000px;
+     font-family: "Bellota Text", sans-serif;
 }
 
 
@@ -307,16 +315,19 @@ body {
     line-height: 1.8;
 
     background: #111;
+    font-family: "Lexend Giga", sans-serif;
 }
 
 .powered-by strong {
     color: white;
     font-size: 15px;
     letter-spacing: 1px;
+    font-family: "Lexend Giga", sans-serif;
 }
 
 .powered-by span {
     font-size: 11px;
+    font-family: "Lexend Giga", sans-serif;
     opacity: 0.6;
 }
 
@@ -328,9 +339,10 @@ body {
 
     background: #023826;
     color: rgb(255, 255, 255);
+    
 
     font-size: clamp(14px, 2vw, 18px);
-    font-family: inherit;
+    font-family: "Lexend Giga", sans-serif;
 
     cursor: pointer;
 
