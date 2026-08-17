@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign In</title>
+
+    <style>
+
+        /* =========================
+           RESET (Labele book no edit favor)
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================
+           BODY (Labele book no edit favor)
+        ========================= */
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            font-family: Arial, sans-serif;
+
+            /* BACKGROUND TETAP */
+            background-image: url("OIP (3).JPG");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           CONTAINER (Labele book no edit favor)
+        ========================= */
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            min-height: 500px;
+
+            display: flex;
+
+            border-radius: 20px;
+            overflow: hidden;
+
+            background: rgba(0, 0, 0, 0.25);
+
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* =========================
+           FOTO (Labele book no edit favor)
+        ========================= */
+
+        .img {
+            width: 100%;
+            min-height: 500px;
+
+            /* FOTO TETAP */
+            background-image: url("mtk.JPG");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        /* =========================
+           CONTENT (Labele book no edit favor)
+        ========================= */
+
+        .content {
+            width: 50%;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px;
+
+            text-align: center;
+
+            color: white;
+        }
+
+
+        /* =========================
+           FORM (Labele book no edit favor)
+        ========================= */
+
+        form {
+            width: 100%;
+            max-width: 320px;
+        }
+
+
+        /* =========================
+           INPUT (Labele book no edit favor)
+        ========================= */
+
+        input {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-bottom: 15px;
+
+            border: none;
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 16px;
+        }
+
+
+        input:focus {
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+
+        /* =========================
+           BUTTON (Labele book no edit favor)
+        ========================= */
+
+        button {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: rgb(143, 1, 46);
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        button:hover {
+            background: rgb(234, 0, 16);
+        }
+
+
+        /* =========================
+           ERROR (Labele book no edit favor)
+        ========================= */
+
+        #error {
+            min-height: 20px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TEXT (Labele book no edit favor)
+        ========================= */
+
+        .content > p {
+            margin-top: 20px;
+
+            font-size: 14px;
+        }
+
+
+        .content p a {
+            color: rgb(204, 75, 120);
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           LOGO (Labele book no edit favor)
+        ========================= */
+
+        .content img {
+            width: 80px;
+            height: auto;
+
+            margin-top: 20px;
+        }
+
+
+        /* =========================
+           TABLET (Labele book no edit favor)
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                max-width: 500px;
+
+                flex-direction: column;
+            }
+
+            .img {
+                width: 100%;
+
+                height: 250px;
+                min-height: 250px;
+            }
+
+            .content {
+                width: 100%;
+
+                padding: 35px 25px;
+            }
+        }
+
+
+        /* =========================
+           HANDPHONE (Labele book no edit favor)
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                width: 100%;
+
+                border-radius: 15px;
+            }
+
+            .img {
+                width: 100%;
+
+                height: 180px;
+                min-height: 180px;
+            }
+
+            .content {
+                width: 100%;
+
+                padding: 30px 20px;
+            }
+
+            form {
+                width: 100%;
+            }
+
+            input {
+                font-size: 15px;
+                padding: 13px;
+            }
+
+            button {
+                font-size: 15px;
+                padding: 13px;
+            }
+
+            .content > p {
+                font-size: 13px;
+            }
+
+            .content img {
+                width: 70px;
+            }
+        }
+
+
+        /* =========================
+           HP KECIL (Labele book no edit favor)
+        ========================= */
+
+        @media (max-width: 360px) {
+
+            .img {
+                height: 150px;
+                min-height: 150px;
+            }
+
+            .content {
+                padding: 25px 15px;
+            }
+
+            .content img {
+                width: 65px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- FOTO TETAP -->
+        <div class="img"></div>
+
+
+        <div class="content">
+
+            <form id="loginForm">
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    autocomplete="email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button type="submit">
+                    Sign In
+                </button>
+
+                <p id="error"></p>
+
+            </form>
+
+
+            <p>
+                Loiola Forever
+                <a href="#">Sign up now</a>
+            </p>
+
+
+            <!-- LOGO TETAP -->
+            <img
+                src="GONZAGANIANS_2023-2025-removebg-preview.png"
+                width="80"
+                alt="Gonzaga"
+            >
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* ==================================
+           DAFTAR EMAIL DAN PASSWORD (Labele book no edit favor)
+           ================================== */
+
+        const users = {
+
+            "aguiar@gmail.com": "12311",
+
+            "anajessica@gmail.com": "12312",
+
+            "bahkita@gmail.com": "12313",
+
+            "benicia@gmail.com": "12314",
+
+            "canizia@gmail.com": "12315",
+
+            "cassandra@gmail.com": "12316",
+
+            "cimplicio@gmail.com": "12317",
+
+            "delfina@gmail.com": "12318",
+
+            "deoneia@gmail.com": "12319",
+
+            "emmanuel@gmail.com": "12320",
+
+            "esperanca@gmail.com": "12321",
+
+            "evita@gmail.com": "12322",
+
+            "ferdinand@gmail.com": "12323",
+
+            "fevrianti@gmail.com": "12324",
+
+            "francisca@gmail.com": "12325",
+
+            "giavania@gmail.com": "12326",
+
+            "guilhermina@gmail.com": "12327",
+
+            "ignatius@gmail.com": "12328",
+
+            "jania@gmail.com": "12329",
+
+            "jenilson@gmail.com": "12330",
+
+            "jenovia@gmail.com": "12331",
+
+            "larissa@gmail.com": "12332",
+
+            "lurocia@gmail.com": "12333",
+
+            "marco@gmail.com": "12334",
+
+            "mariabaptista@gmail.com": "12335",
+
+            "mariadellafonsa@gmail.com": "12336",
+
+            "melicia@gmail.com": "12337",
+
+            "michel@gmail.com": "12338",
+
+            "milugrrexcya@gmail.com": "12339",
+
+            "natalvira@gmail.com": "12340",
+
+            "nilda@gmail.com": "12341",
+
+            "osvaldo@gmail.com": "12342",
+
+            "patricia@gmail.com": "12343",
+
+            "richana@gmail.com": "12344",
+
+            "riganho@gmail.com": "12345",
+
+            "rivanio@gmail.com": "12346",
+
+            "rosalina@gmail.com": "12347",
+
+            "safira@gmail.com": "12348",
+
+            "vidalia@gmail.com": "12349"
+
+        };
+
+
+        /* ==================================
+           PROSES LOGIN (Labele book no edit favor)
+           ================================== */
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim()
+                        .toLowerCase();
+
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
+
+
+                const error =
+                    document.getElementById("error");
+
+
+                /* CEK EMAIL DAN PASSWORD */
+
+                if (
+                    users[email] &&
+                    users[email] === password
+                ) {
+
+                    /* LOGIN BERHASIL */
+
+                    error.textContent = "Login susesu!";
+                    error.style.color = "white";
+
+
+                    /* Masuk ke halaman utama */
+
+                    setTimeout(function() {
+
+                        window.location.href = "Gonzaga.html";
+
+                    }, 500);
+
+
+                } else {
+
+                    /* LOGIN GAGAL */
+
+                    error.textContent =
+                        "Email atau password salah!";
+
+                    error.style.color = "red";
+
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>
