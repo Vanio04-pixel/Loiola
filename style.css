@@ -358,68 +358,6 @@ body {
     background: #0a7c50;
 }
 
-<script>
-
-const permission = document.getElementById("musicPermission");
-const button = document.getElementById("enterMusic");
-const music = document.getElementById("backgroundMusic");
-
-
-// Deteksi Safari
-const isSafari =
-    /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-
-// Kalau bukan Safari, langsung hilangkan notifikasi
-if (!isSafari) {
-
-    permission.style.display = "none";
-
-}
-
-
-// Tombol ENTER WITH MUSIC
-button.addEventListener("click", async function () {
-
-    try {
-
-        // Coba jalankan musik
-        await music.play();
-
-        // Simpan status musik
-        sessionStorage.setItem("musicEnabled", "true");
-
-        // Hilangkan notifikasi
-        permission.style.opacity = "0";
-        permission.style.pointerEvents = "none";
-
-        // Tunggu sebentar agar animasi selesai
-        setTimeout(function () {
-
-            // Masuk ke website berikutnya
-            window.location.href = "index.html";
-
-        }, 400);
-
-    } catch (error) {
-
-        console.log("Music error:", error);
-
-        // Kalau musik gagal, tetap izinkan user masuk
-        permission.style.opacity = "0";
-        permission.style.pointerEvents = "none";
-
-        setTimeout(function () {
-
-            window.location.href = "index.html";
-
-        }, 400);
-
-    }
-
-});
-
-</script>
 /* =========================
    HANDPHONE
 ========================= */
