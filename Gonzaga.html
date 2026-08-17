@@ -12,50 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Carattere&family=Lexend+Giga:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<audio id="backgroundMusic" loop preload="auto">
-    <source src="Harry_Potter_Ambient_Music__Hogwarts__Relaxing,_Studying,_Sleeping(128k).m4a" type="audio/mp4">
-</audio>
-
-<div id="musicMessage">
-    🎵 Tap untuk memulai musik
-</div>
-
-<script>
-const music = document.getElementById("backgroundMusic");
-const message = document.getElementById("musicMessage");
-
-let started = false;
-
-function playMusic() {
-
-    if (started) return;
-
-    const promise = music.play();
-
-    if (promise !== undefined) {
-        promise.then(() => {
-
-            started = true;
-            message.style.display = "none";
-
-        }).catch((error) => {
-
-            console.log("Audio gagal:", error);
-
-        });
-    }
-}
-
-document.addEventListener("touchend", playMusic, {
-    once: true,
-    passive: true
-});
-
-document.addEventListener("click", playMusic, {
-    once: true
-});
-</script>
-    
 <body>
 
     <!-- WELCOME -->
@@ -219,6 +175,11 @@ document.addEventListener("click", playMusic, {
         LOGOUT
     </a>
 </div>    
+
+
+    <audio autoplay loop
+        src="Harry_Potter_Ambient_Music__Hogwarts__Relaxing,_Studying,_Sleeping(128k).m4a">
+    </audio>
 
 </body>
 </html>
