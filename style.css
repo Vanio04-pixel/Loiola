@@ -277,6 +277,66 @@ body {
 
 }
 
+.logout-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 35px 0 45px;
+
+    background: #111;
+}
+
+.powered-by {
+    margin-top: 0px;
+
+    color: white;
+    text-align: center;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    opacity: 0.8;
+    background: #023826;
+}
+
+.powered-by strong {
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.powered-by span {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.logout-btn {
+    padding: 14px 25px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: #023826;
+    color: rgb(255, 255, 255);
+
+    font-size: clamp(14px, 2vw, 18px);
+    font-family: inherit;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    transform: scale(1.05);
+    background: #0a7c50;
+}
 
 /* =========================
    HANDPHONE
@@ -330,5 +390,7 @@ body {
     .lol {
         font-size: 22px;
     }
+
+    
 
 }
