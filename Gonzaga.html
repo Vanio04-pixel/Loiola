@@ -177,9 +177,35 @@
 </div>    
 
 
-    <audio autoplay loop
-        src="Harry_Potter_Ambient_Music__Hogwarts__Relaxing,_Studying,_Sleeping(128k).m4a">
-    </audio>
+    <audio id="backgroundMusic" loop>
+    <source src="Harry_Potter_Ambient_Music__Hogwarts__Relaxing,_Studying,_Sleeping(128k).m4a" type="audio/mp4">
+</audio>
+
+<script>
+    const music = document.getElementById("backgroundMusic");
+
+    let musicStarted = false;
+
+    function startMusic() {
+
+        if (musicStarted) return;
+
+        music.play()
+            .then(() => {
+                musicStarted = true;
+                console.log("Music started");
+            })
+            .catch(() => {
+                console.log("Music masih diblokir");
+            });
+    }
+
+    // HP / iPhone
+    document.addEventListener("touchstart", startMusic, { once: true });
+
+    // Laptop / PC
+    document.addEventListener("click", startMusic, { once: true });
+</script>
 
 </body>
 </html>
