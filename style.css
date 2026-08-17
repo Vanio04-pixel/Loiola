@@ -358,6 +358,26 @@ body {
     background: #0a7c50;
 }
 
+#musicMessage {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+
+    padding: 12px 22px;
+
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+
+    border-radius: 30px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    pointer-events: none;
+}
+
 /* =========================
    HANDPHONE
 ========================= */
