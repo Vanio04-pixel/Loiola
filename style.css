@@ -99,12 +99,51 @@ body {
 .contener {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 10vh;
 
     overflow: hidden;
 
     color: white;
     
+}
+
+.expand-box {
+        display: flex;
+    gap: 8px;
+
+    width: 100%;
+    height: 200px;
+
+    padding: 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    overflow: hidden;
+}
+
+.box {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: flex 0.5s ease;
+}
+
+.box:hover {
+    flex: 3;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .hero-img {
@@ -152,7 +191,6 @@ body {
     line-height: 1.7;
     font-family: "Bellota Text", sans-serif;
 }
-
 
 /* =========================
    HOLI
