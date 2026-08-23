@@ -182,7 +182,7 @@ body {
 
 .hero-text h1 {
     font-size: clamp(30px, 6vw, 70px);
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     font-family: "Lexend Giga", sans-serif;
 }
 
@@ -191,6 +191,7 @@ body {
     line-height: 1.7;
     font-family: "Bellota Text", sans-serif;
 }
+
 
 /* =========================
    HOLI
